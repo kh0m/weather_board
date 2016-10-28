@@ -1,4 +1,19 @@
-<div class="container">
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+
+
+
+<div class="row">
+  <div class="col-sm-4 text-center">
+    <%= react_component('WeatherPanel', cityName: "New York", latitude: 40.7128, longitude: 74.0059) %>
+  </div>
+  <div class="col-sm-4 text-center">
+    <%= react_component('WeatherPanel', cityName: "London", latitude: 51.5074, longitude: 0.1278) %>
+  </div>
+  <div class="col-sm-4 text-center">
+    <%= react_component('WeatherPanel', cityName: "Hong Kong", latitude: 22.3964, longitude: 114.1095) %>
+  </div>
 </div>
+
+
+
+
+<iframe width='100%' frameBorder='0' style='height: 50vh; margin: 25px 0;' src='https://maps.darksky.net/@temperature,39.000,-95.000,4?embed=true&timeControl=false&fieldControl=false&defaultField=temperature&defaultUnits=_f'></iframe>

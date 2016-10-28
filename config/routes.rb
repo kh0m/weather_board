@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   get 'home/index'
   root 'home#index'
+
+  post 'home/weather', to: 'home#weather'
 end
