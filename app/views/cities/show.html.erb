@@ -1,2 +1,5 @@
-<h1>Cities#show</h1>
-<p>Find me in app/views/cities/show.html.erb</p>
+<h1><%= @cityName %></h1>
+<h2><%= @latitude %>, <%= @longitude %></h2>
+
+<%= react_component('DetailedWeatherPanel', cityName: "New York", latitude: 40.7128, longitude: 74.0059) %>
+<p><%= @data %></p>

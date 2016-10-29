@@ -6,13 +6,13 @@ class WeatherPanel extends React.Component {
 
   loadWeatherData(){
     $.ajax({
-      url: '/home/weather',
+      url: '/weather',
       dataType: 'json',
       type: 'POST',
       data: {latitude: this.props.latitude, longitude: this.props.longitude},
       cache: false,
       success: function(data) {
-        this.setState({temperature: data.currently.temperature, icon: data.currently.icon, summary: data.currently.summary, chanceOfRain: data.currently.precipProbability});
+        this.setState({temperature: data.currently.temperature, icon: data.currently.icon, summary: data.currently.summary, chanceOfRain: data.currently.precipProbability * 100});
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(status, err.toString());
@@ -31,11 +31,10 @@ class WeatherPanel extends React.Component {
           <div className="panel-header">
             <div className="panel-body">
               <h2>{this.props.cityName}</h2>
-              <h3>[{this.props.latitude}], [{this.props.longitude}]</h3>
               <div>Temperature: {this.state.temperature}</div>
               <div>Icon: {this.state.icon}</div>
               <div>Summary: {this.state.summary}</div>
-              <div>Chance of Rain: {this.state.chanceOfRain}</div>
+              <div>Chance of Rain: {this.state.chanceOfRain}%</div>
             </div>
           </div>
         </div>
