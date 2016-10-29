@@ -32,14 +32,14 @@
 
       <div class="row">
         <div class="col-sm-1"></div>
-        <% (1..10).each do |num|%>
-          <% if num == 6 %>
+        <% (0..9).each do |num|%>
+          <% if num == 5 %>
             </div>
             <div class="row">
               <div class="col-sm-1"></div>
           <% end %>
           <div class="col-sm-2 text-center">
-            <%= react_component('DayPanel', latitude: @latitude, longitude: @longitude, time: Time.new().to_i + (num*86400)) %>
+            <%= react_component('DayPanel', latitude: @latitude, longitude: @longitude, time: Time.new().to_i + (num*86400000)) %>
           </div>
         <% end %>
       </div>

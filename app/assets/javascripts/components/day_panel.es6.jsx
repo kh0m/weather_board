@@ -4,7 +4,7 @@ class DayPanel extends React.Component {
     this.state = {data: ""};
   }
 
-  loadWeatherData(){
+  loadWeatherData() {
     $.ajax({
       url: '/weather',
       dataType: 'json',
@@ -20,8 +20,17 @@ class DayPanel extends React.Component {
     });
   }
 
+  setDay() {
+    var days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"]
+    var date = new Date(this.props.time);
+    console.log(date);
+    var day = date.getDay();
+    this.setState({day: days[day]})
+  }
+
   componentDidMount() {
     this.loadWeatherData();
+    this.setDay();
   }
 
   render () {
@@ -29,7 +38,7 @@ class DayPanel extends React.Component {
       <div>
         <div className="panel panel-default">
           <div className="panel-heading">
-            {this.props.day}
+            {this.state.day}
           </div>
           <div className="panel-body">
             <h4>{this.state.temperature}&deg;</h4><div>Icon: {this.state.icon}</div>
@@ -46,6 +55,5 @@ class DayPanel extends React.Component {
   cityName: React.PropTypes.string,
   latitude: React.PropTypes.number,
   longitude: React.PropTypes.number,
-  time: React.PropTypes.number,
-  day: React.ProtoTypes.string
+  time: React.PropTypes.number
 };
