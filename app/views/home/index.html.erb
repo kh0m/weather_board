@@ -12,13 +12,13 @@
 
 <div class="row">
   <div class="col-sm-4 text-center">
-    <%= react_component('WeatherPanel', cityName: "New York", latitude: 40.7128, longitude: 74.0059, time: Time.new()) %>
+    <%= react_component('WeatherPanel', cityName: "New York", latitude: 40.7128, longitude: 74.0059, time: Time.new().to_i) %>
   </div>
   <div class="col-sm-4 text-center">
-    <%= react_component('WeatherPanel', cityName: "London", latitude: 51.5074, longitude: 0.1278, time: Time.new()) %>
+    <%= react_component('WeatherPanel', cityName: "London", latitude: 51.5074, longitude: 0.1278, time: Time.new().to_i) %>
   </div>
   <div class="col-sm-4 text-center">
-    <%= react_component('WeatherPanel', cityName: "Hong Kong", latitude: 22.3964, longitude: 114.1095, time: Time.new()) %>
+    <%= react_component('WeatherPanel', cityName: "Hong Kong", latitude: 22.3964, longitude: 114.1095, time: Time.new().to_i) %>
   </div>
 </div>
 

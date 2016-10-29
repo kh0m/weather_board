@@ -44,10 +44,6 @@ class WeatherPanel extends React.Component {
 
 WeatherPanel.propTypes = {
   cityName: React.PropTypes.string,
-  temperature: React.PropTypes.number,
-  icon: React.PropTypes.string,
-  summary: React.PropTypes.string,
-  chanceOfRain: React.PropTypes.number,
   latitude: React.PropTypes.number,
   longitude: React.PropTypes.number,
   time: React.PropTypes.number

@@ -1,5 +1,3 @@
-<h1><%= @cityName %></h1>
-<h2><%= @latitude %>, <%= @longitude %></h2>
-
-<%= react_component('Forecast', cityName: @cityName, latitude: @latitude, longitude: @longitude) %>
-<p><%= @data %></p>
+<div class="row">
+    <%= react_component('Forecast', cityName: @cityName, latitude: @latitude, longitude: @longitude, time: Time.new().to_i) %>
+</div>
