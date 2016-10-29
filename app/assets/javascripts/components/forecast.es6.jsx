@@ -1,4 +1,4 @@
-class WeatherPanel extends React.Component {
+class Forecast extends React.Component {
   constructor(props) {
     super(props);
     this.state = {data: ""};
@@ -9,10 +9,10 @@ class WeatherPanel extends React.Component {
       url: '/weather',
       dataType: 'json',
       type: 'POST',
-      data: {latitude: this.props.latitude, longitude: this.props.longitude, time: this.props.time},
+      data: {latitude: this.props.latitude, longitude: this.props.longitude},
       cache: false,
       success: function(data) {
-        this.setState({temperature: Math.floor(data.currently.temperature), icon: data.currently.icon, summary: data.currently.summary, chanceOfRain: data.currently.precipProbability * 100});
+        this.setState({temperature: data.currently.temperature, icon: data.currently.icon, summary: data.currently.summary, chanceOfRain: data.currently.precipProbability * 100});
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(status, err.toString());
@@ -31,7 +31,7 @@ class WeatherPanel extends React.Component {
           <div className="panel-header">
             <div className="panel-body">
               <h2>{this.props.cityName}</h2>
-              <h1>{this.state.temperature}&deg;</h1><div>Icon: {this.state.icon}</div>
+              <h1>{Math.floor(this.state.temperature)}&deg;</h1><div>Icon: {this.state.icon}</div>
               <h3>{this.state.summary}</h3>
               <h4>Chance of Rain: {this.state.chanceOfRain}%</h4>
             </div>
@@ -42,13 +42,9 @@ class WeatherPanel extends React.Component {
   }
 }
 
-WeatherPanel.propTypes = {
-  cityName: React.PropTypes.string,
+Forecast.propTypes = {
   temperature: React.PropTypes.number,
   icon: React.PropTypes.string,
   summary: React.PropTypes.string,
-  chanceOfRain: React.PropTypes.number,
-  latitude: React.PropTypes.number,
-  longitude: React.PropTypes.number,
-  time: React.PropTypes.number
+  precipProb: React.PropTypes.number
 };
