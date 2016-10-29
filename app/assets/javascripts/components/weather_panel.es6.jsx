@@ -6,7 +6,7 @@ class WeatherPanel extends React.Component {
 
   loadWeatherData(){
     $.ajax({
-      url: 'home/weather',
+      url: '/home/weather',
       dataType: 'json',
       type: 'POST',
       data: {latitude: this.props.latitude, longitude: this.props.longitude},
