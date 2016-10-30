@@ -3,6 +3,7 @@
 <div class="row">
   <% @current_user.cities.each do |city| %>
     <div class="col-sm-4">
+      <!-- why is long and lat a string??? should be decimal, or number -->
       <%= react_component('FavoritePanel', cityName: city.name, latitude: city.latitude, longitude: city.longitude, time: Time.new().to_i) %>
     </div>
   <% end %>

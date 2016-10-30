@@ -20,8 +20,14 @@ class CitiesController < ApplicationController
   end
 
   def create
-    p params
     @current_user.cities.create(name: params[:name], latitude: params[:latitude], longitude: params[:longitude])
-    render json: @current_user
+    redirect_to cities_index_path
+  end
+
+  def destroy
+    @city = City.find_by_name(params[:name])
+    @city.destroy
+
+    redirect_to cities_index_path
   end
 end

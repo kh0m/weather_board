@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # routes for city details and favorites
-  post 'cities/create', to: 'cities#create'
   get 'cities/index'
   get 'cities/show'
+  post 'cities/create', to: 'cities#create'
+  post 'cities/destroy', to: 'cities#destroy'
 
   # enpoint for getting weather data from forecast.io
   post 'weather', to: 'application#weather'
