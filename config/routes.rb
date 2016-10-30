@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # routes for city details and favorites
+  post 'cities/create', to: 'cities#create'
   get 'cities/index'
   get 'cities/show'
 

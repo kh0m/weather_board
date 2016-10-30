@@ -17,6 +17,11 @@ class CitiesController < ApplicationController
     @cityName = json["results"][0]["formatted_address"]
     @latitude = json["results"][0]["geometry"]["location"]["lat"]
     @longitude = json["results"][0]["geometry"]["location"]["lng"]
+  end
 
+  def create
+    p params
+    @current_user.cities.create(name: params[:name], latitude: params[:latitude], longitude: params[:longitude])
+    render json: @current_user
   end
 end

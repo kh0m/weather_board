@@ -1,7 +1,16 @@
 <div class="row">
+  <script>$(function () {$('[data-toggle="tooltip"]').tooltip()})</script>
+
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h1><%= @cityName %></h1>
+      <h1><%= @cityName %>
+        <span class="pull-right" data-toggle="tooltip" data-placement="top" title="Add to favorites">
+          <%= link_to cities_create_path(name: @cityName, latitude: @latitude, longitude: @longitude), method: :post do %>
+            <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+          <% end %>
+        </span>
+      </h1>
+
     </div>
 
     <div class="panel-body">
