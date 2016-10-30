@@ -7,7 +7,7 @@ gem 'httparty', '~> 0.14.0'
 # Use react
 gem 'react-rails'
 # For authentication and user sessions
-gem 'authlogic', '~> 3.4', '>= 3.4.6'
+gem 'authlogic', '~> 3.5.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
