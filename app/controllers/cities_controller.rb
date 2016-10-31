@@ -2,6 +2,7 @@ class CitiesController < ApplicationController
   before_action :require_user
 
   def index
+    @cities = @current_user.cities
   end
 
   def show
@@ -25,7 +26,7 @@ class CitiesController < ApplicationController
   end
 
   def destroy
-    @city = City.find_by_name(params[:name])
+    @city = City.find(params[:id])
     @city.destroy
 
     redirect_to cities_index_path

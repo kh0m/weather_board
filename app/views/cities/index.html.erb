@@ -1,10 +1,14 @@
 <h1>Favorites</h1>
 
+<% if @current_user.cities.count == 0 %>
+  <br/>
+  <h4>no favorites added</h4>
+<% end %>
+
 <div class="row">
-  <% @current_user.cities.each do |city| %>
+  <% @cities.each do |city| %>
     <div class="col-sm-4">
-      <!-- why is long and lat a string??? should be decimal, or number -->
-      <%= react_component('FavoritePanel', cityName: city.name, latitude: city.latitude, longitude: city.longitude, time: Time.new().to_i) %>
+      <%= react_component('FavoritePanel', id: city.id.to_i, cityName: city.name, latitude: city.latitude.to_f, longitude: city.longitude.to_f, time: Time.new().to_i) %>
     </div>
   <% end %>
 </div>
