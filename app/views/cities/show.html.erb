@@ -6,7 +6,7 @@
       <h1><%= @cityName %>
         <span class="pull-right" data-toggle="tooltip" data-placement="top" title="Add to favorites">
           <%= link_to cities_create_path(name: @cityName, latitude: @latitude, longitude: @longitude), method: :post do %>
-            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-heart-empty" style="color: #333333" aria-hidden="true"></span>
           <% end %>
         </span>
       </h1>

@@ -15,7 +15,7 @@ class DayPanel extends React.Component {
         var temperature = (!(data.currently.temperature) ? "Not Available" : data.currently.temperature );
         var icon = (!(data.currently.icon) ? "Not Available" : data.currently.icon );
         var summary = (!(data.currently.summary) ? "Not Available" : data.currently.summary);
-        var chanceOfRain = (!(data.currently.precipProbability) ? "Not Available" : (data.currently.precipProbability * 100).toString() + "%");
+        var chanceOfRain = (!(data.currently.precipProbability) ? "Not Available" : (data.currently.precipProbability * 100).toFixed().toString() + "%");
 
         this.setState({temperature: Math.floor(temperature), icon: icon, summary: summary, chanceOfRain: chanceOfRain});
       }.bind(this),
