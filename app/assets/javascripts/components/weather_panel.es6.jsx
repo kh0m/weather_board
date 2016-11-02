@@ -14,7 +14,12 @@ class WeatherPanel extends React.Component {
       data: {latitude: this.props.latitude, longitude: this.props.longitude, time: this.props.time},
       cache: false,
       success: function(data) {
+        // set the state
         this.setState({temperature: Math.floor(data.currently.temperature), icon: data.currently.icon, summary: data.currently.summary, chanceOfRain: data.currently.precipProbability * 100});
+        // set the icon
+        var skycons = new Skycons({"color": "pink"});
+        skycons.add(this.props.panelID, this.state.icon);
+        skycons.play();
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(status, err.toString());
@@ -34,7 +39,7 @@ class WeatherPanel extends React.Component {
             <div className="panel-body">
               <form id="blank-form"></form>
               <a href={this.state.url}><h2>{this.props.cityName}</h2></a>
-              <h1>{this.state.temperature}&deg;</h1><div>Icon: {this.state.icon}</div>
+              <h1>{this.state.temperature}&deg;</h1><canvas id={this.props.panelID} width="128" height="128"></canvas>
               <h3>{this.state.summary}</h3>
               <h4>Chance of Rain: {this.state.chanceOfRain}%</h4>
             </div>
@@ -46,6 +51,7 @@ class WeatherPanel extends React.Component {
 }
 
 WeatherPanel.propTypes = {
+  panelID: React.PropTypes.string,
   cityName: React.PropTypes.string,
   latitude: React.PropTypes.number,
   longitude: React.PropTypes.number,

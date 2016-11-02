@@ -26,7 +26,7 @@
           </div>
           <div class="row">
             <div class="col-sm-12 text-center">
-              <%= react_component('WeatherPanel', latitude: @latitude, longitude: @longitude, time: Time.new().to_i) %>
+              <%= react_component('WeatherPanel', panelID: "currentWeather", latitude: @latitude, longitude: @longitude, time: Time.new().to_i) %>
             </div>
           </div>
         </div>
