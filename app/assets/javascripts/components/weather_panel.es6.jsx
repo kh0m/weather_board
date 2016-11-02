@@ -15,7 +15,7 @@ class WeatherPanel extends React.Component {
       cache: false,
       success: function(data) {
         // set the state
-        this.setState({temperature: Math.floor(data.currently.temperature), icon: data.currently.icon, summary: data.currently.summary, chanceOfRain: data.currently.precipProbability * 100});
+        this.setState({temperature: Math.floor(data.currently.temperature), icon: data.currently.icon, summary: data.currently.summary, chanceOfRain: (data.currently.precipProbability * 100).toFixed().toString()});
         // set the icon
         var skycons = new Skycons({"color": "pink"});
         skycons.add(this.props.panelID, this.state.icon);
