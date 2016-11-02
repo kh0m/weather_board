@@ -14,7 +14,7 @@ class FavoritePanel extends React.Component {
         <div className="pull-right btn btn-default" onClick={this.destroy}>
           <span className="glyphicon glyphicon-remove"></span>
         </div>
-        <WeatherPanel cityName={this.props.cityName} latitude={this.props.latitude} longitude={this.props.longitude} time={this.props.time} />
+        <WeatherPanel panelID={this.props.stringID} cityName={this.props.cityName} latitude={this.props.latitude} longitude={this.props.longitude} time={this.props.time} />
       </div>
     );
   }
@@ -22,6 +22,7 @@ class FavoritePanel extends React.Component {
 
 FavoritePanel.propTypes = {
   id: React.PropTypes.number,
+  stringID: React.PropTypes.string,
   cityName: React.PropTypes.string,
   latitude: React.PropTypes.number,
   longitude: React.PropTypes.number,

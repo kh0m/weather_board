@@ -7,8 +7,8 @@
 
 <div class="row">
   <% @cities.each do |city| %>
-    <div class="col-sm-4">
-      <%= react_component('FavoritePanel', id: city.id.to_i, cityName: city.name, latitude: city.latitude.to_f, longitude: city.longitude.to_f, time: Time.new().to_i) %>
+    <div class="col-sm-4 text-center">
+      <%= react_component('FavoritePanel', stringID: city.id.to_s, id: city.id.to_i, cityName: city.name, latitude: city.latitude.to_f, longitude: city.longitude.to_f, time: Time.new().to_i) %>
     </div>
   <% end %>
 </div>

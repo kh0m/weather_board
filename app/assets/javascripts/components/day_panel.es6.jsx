@@ -18,6 +18,12 @@ class DayPanel extends React.Component {
         var chanceOfRain = (!(data.currently.precipProbability) ? "Not Available" : (data.currently.precipProbability * 100).toFixed().toString() + "%");
 
         this.setState({temperature: Math.floor(temperature), icon: icon, summary: summary, chanceOfRain: chanceOfRain});
+
+        // set the icon
+        var skycons = new Skycons({"color": "orange"});
+        skycons.add(this.props.panelID, this.state.icon);
+        skycons.play();
+
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(status, err.toString());
@@ -47,7 +53,7 @@ class DayPanel extends React.Component {
             {this.state.day}, {this.state.date_num}
           </div>
           <div className="panel-body">
-            <h4>{this.state.temperature}&deg;</h4><div>Icon: {this.state.icon}</div>
+            <h4>{this.state.temperature}&deg;</h4><canvas id={this.props.panelID} width="64" height="64"></canvas>
             <h5>{this.state.summary}</h5>
             <p>Rain: {this.state.chanceOfRain}</p>
           </div>
@@ -58,6 +64,7 @@ class DayPanel extends React.Component {
 }
 
   DayPanel.propTypes = {
+  panelID: React.PropTypes.string,
   cityName: React.PropTypes.string,
   latitude: React.PropTypes.number,
   longitude: React.PropTypes.number,
