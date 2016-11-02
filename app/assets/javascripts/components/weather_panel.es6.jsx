@@ -1,7 +1,9 @@
 class WeatherPanel extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {data: ""};
+    // create url for the clickable city name and set it in state
+    url = "/cities/show?search=" + this.props.cityName
+    this.state = {url: url};
   }
 
   loadWeatherData(){
@@ -30,7 +32,8 @@ class WeatherPanel extends React.Component {
         <div className="panel panel-default">
           <div className="panel-header">
             <div className="panel-body">
-              <h2>{this.props.cityName}</h2>
+              <form id="blank-form"></form>
+              <a href={this.state.url}><h2>{this.props.cityName}</h2></a>
               <h1>{this.state.temperature}&deg;</h1><div>Icon: {this.state.icon}</div>
               <h3>{this.state.summary}</h3>
               <h4>Chance of Rain: {this.state.chanceOfRain}%</h4>
